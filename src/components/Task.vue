@@ -146,7 +146,7 @@ body {
 /* CARD BACKGROUNDS */
 
 .pendente {
-  background: radial-gradient(#1fe4f5, #3fbafe);
+  background: radial-gradient(#fbc1cc, #fa99b2);;
 }
 
 .feito {

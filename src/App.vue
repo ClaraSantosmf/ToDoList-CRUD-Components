@@ -1,6 +1,7 @@
 <template>
   <div id="app">
     <h1>To Do - Controle sua vida</h1>
+    <barraProgresso :progresso="progresso"> </barraProgresso>
     <listaDeTasks  
     :tasks="tasks"
     @deletarTask="taskDeletada" 
@@ -11,15 +12,23 @@
 </template>
 
 <script>
+import barraProgresso from './components/barraProgresso.vue'
 import listaDeTasks from './components/listaDeTasks.vue'
 import NovaTarefa from './components/NovaTarefa.vue'
 
 
 export default {
-  components: { listaDeTasks, NovaTarefa },
+  components: { listaDeTasks, NovaTarefa, barraProgresso, },
   data(){
     return{
       tasks: []
+    }
+  },
+  computed:{
+    progresso(){
+      let total = this.tasks.length
+      let feitas = this.tasks.filter(tas => !tas.pending).length
+      return Math.round(feitas/total * 100) || 0
     }
   },
   methods:{
