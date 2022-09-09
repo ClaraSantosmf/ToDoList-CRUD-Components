@@ -1,27 +1,28 @@
 <template>
   <div class="nova-tarefa">
       <div class="novaTarefaForm">
-    <form action="">
+          <form action="">
+        <label for="title">Nova Tarefa</label>
             <input placeholder="Title" id="title" type="text" v-model="title"/>
-            <label for="title">Tarefa</label>
 
         <div class="selecaoDeProjeto">
+            <label for="project">Escolha o tipo de projeto</label>
+            <br>
             <select id="project" v-model="project">
-            <option value="" disabled selected 
-            >Choose your option</option>
+            <option value="" disabled selected
+            > Choose your option</option>
             <option value="Estudos">Estudos</option>
             <option value="Financeiro">Financeiro</option>
             <option value="Trabalho">Trabalho</option>
             </select>
-            <br>
-            <label for="project">Escolha o tipo de projeto</label>
+            
         </div>
 
         <div class="selecaoDeData">
+            <label for="dueTo">Qual é a data limite?</label><br>
             <input v-model="dueTo" type="date" id="dueTo" data-inputmask="'alias': 'date'"/> <br>
-            <label for="dueTo">Qual é a data limite?</label>
         </div>
-        <button class="waves-effect waves-light btn-large" id="btnSave" @click.prevent="salvarTask">Save</button>
+        <button id="btnSave" @click.prevent="salvarTask">Save</button>
         </form>
     </div>
   </div>
@@ -62,8 +63,10 @@ export default {
     display: flex;
 }
 form{
+    font-size: 1.5rem;
     flex-direction: column;
     align-content: center;
+    align-items: center;
     margin: 20px;
     padding: 30px;
     display: flex;
@@ -72,10 +75,36 @@ form{
     background: radial-gradient(#76b2fe, #b69efe);
     border-radius: 10px;
 } 
+input, div, select, button{
+    margin-bottom: 4%;
+    margin-top: 2%;
+    border-radius: 5px;
+}
+button {
+    width: 60%;
+    font-size: 1rem;
+  background-color: transparent;
+  border: 0.2em solid #fff;
+  border-radius: 1em;
+  line-height: 1;
+  padding: 1em;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: #fff;
+  -webkit-transition: all 150ms ease-in-out;
+  transition: all 150ms ease-in-out;
+}
+button:hover, button:focus {
+  color: #362cf6;
+  outline: 0;
+}
 
 input, select{
-    font-size: 20px;
+    color: rgb(0, 0, 0);
+    background: #fff;
+    font-size: 100%;
 }
+
 </style>
 
 <!-- https://codepen.io/ericmahoney/pen/oNLMOYw -->

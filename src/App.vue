@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <h1>To Do - Controle sua vida</h1>
-    <listaDeTasks :tasks="tasks" /> 
+    <listaDeTasks  @deletarTask="taskDeletada" :tasks="tasks"/> 
     <NovaTarefa @AdicionandoTask="taskAdicionada"></NovaTarefa>
   </div>
 </template>
@@ -30,8 +30,10 @@ export default {
         pending: task.pending || true,
         isShow: task.isShow
       })
+    },
+    taskDeletada(id){
+      this.tasks.splice(id, 1)
     }
-
   }
 }
 </script>

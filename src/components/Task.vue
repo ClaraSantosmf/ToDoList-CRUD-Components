@@ -2,11 +2,12 @@
      <div class="task" :class="estadoDaClasse">
         
         <div class="card__icon"><i class="fas fa-bolt"></i></div>
+        <input type="checkbox" class="done" >
         <p class="card__date">{{task.dueTo}}<i class="fas fa-times"></i></p>
-        <p class="card__exit"> Deletar <i class="fas fa-times"></i></p>
+        <a href="#" class="card__exit" @click="$emit('deletarTask', task)"> Deletar </a>
         <h2 class="card__title">{{task.title}}</h2>
         <p class="card__apply"> {{task.project}}</p>
-        <a class="card__link" href="#"> <i class="fas fa-arrow-right"></i></a>
+        <br>
     </div>
 
 </template>
@@ -65,6 +66,7 @@ body {
 /* CARDS */
 
 .task {
+  position: relative;
   margin: 20px;
   padding: 20px;
   width: 500px;
@@ -128,6 +130,12 @@ body {
 .card__apply {
   grid-row: 4/5;
   align-self: center;
+}
+
+.done{
+  position: absolute;
+  right: 15px;
+  bottom: 5px;
 }
 
 /* CARD BACKGROUNDS */
