@@ -1,7 +1,11 @@
 <template>
   <div id="app">
     <h1>To Do - Controle sua vida</h1>
-    <listaDeTasks  @deletarTask="taskDeletada" :tasks="tasks"/> 
+    <listaDeTasks  
+    :tasks="tasks"
+    @deletarTask="taskDeletada" 
+    @mudandoEstadoTarefa="mudadoEstado" 
+    /> 
     <NovaTarefa @AdicionandoTask="taskAdicionada"></NovaTarefa>
   </div>
 </template>
@@ -15,10 +19,7 @@ export default {
   components: { listaDeTasks, NovaTarefa },
   data(){
     return{
-      tasks: [
-      {title:"Estudar Vue", project: "Preciso aprofundar em cli", dueTo:"12/12/2022", pending: true, isShow: false},
-      {title:"Estudar test", project: "Preciso aprofundar em DjangoTest", dueTo:"12/12/2022", pending: false, isShow: false},
-      ]
+      tasks: []
     }
   },
   methods:{
@@ -33,6 +34,9 @@ export default {
     },
     taskDeletada(id){
       this.tasks.splice(id, 1)
+    },
+    mudadoEstado(id){
+      this.tasks[id].pending = !this.tasks[id].pending
     }
   }
 }

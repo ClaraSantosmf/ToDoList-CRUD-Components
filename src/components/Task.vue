@@ -1,8 +1,8 @@
 <template>
      <div class="task" :class="estadoDaClasse">
-        
+        <strong v-if="done">🍪 Tarefa Realizada!!</strong>
         <div class="card__icon"><i class="fas fa-bolt"></i></div>
-        <input type="checkbox" class="done" >
+        <input type="checkbox" v-model="done" class="done" @change="$emit('mudandoEstadoTarefa', task)">
         <p class="card__date">{{task.dueTo}}<i class="fas fa-times"></i></p>
         <a href="#" class="card__exit" @click="$emit('deletarTask', task)"> Deletar </a>
         <h2 class="card__title">{{task.title}}</h2>
@@ -18,6 +18,11 @@ export default {
     props: {
         task: {type: Object, required:true }
     },
+    data(){
+    return{
+      done:''
+    }
+  },
     computed: {
         estadoDaClasse(){
             return{
