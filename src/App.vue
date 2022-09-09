@@ -31,6 +31,13 @@ export default {
       return Math.round(feitas/total * 100) || 0
     }
   },
+  watch:{
+    tasks: {
+      deep: true,
+      handler(){
+        localStorage.setItem('tasks', JSON.stringify(this.tasks))   
+      }}
+    },
   methods:{
     taskAdicionada(task){
       this.tasks.push({
@@ -47,6 +54,10 @@ export default {
     mudadoEstado(id){
       this.tasks[id].pending = !this.tasks[id].pending
     }
+  },
+  created(){
+    let json = localStorage.getItem('tasks')
+    this.tasks = JSON.parse(json) || []
   }
 }
 </script>

@@ -2,11 +2,12 @@
      <div class="task" :class="estadoDaClasse">
         <strong v-if="done">🍪 Tarefa Realizada!!</strong>
         <div class="card__icon"><i class="fas fa-bolt"></i></div>
-        <input type="checkbox" v-model="done" class="done" @change="$emit('mudandoEstadoTarefa', task)">
         <p class="card__date">{{task.dueTo}}<i class="fas fa-times"></i></p>
         <a href="#" class="card__exit" @click="$emit('deletarTask', task)"> Deletar </a>
         <h2 class="card__title">{{task.title}}</h2>
         <p class="card__apply"> {{task.project}}</p>
+        <a href="#" class="card__exit"> Editar Tarefa </a>
+        <input type="checkbox" v-model="done" class="done" @change="$emit('mudandoEstadoTarefa', task)">
         <br>
     </div>
 
